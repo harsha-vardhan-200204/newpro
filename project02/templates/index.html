@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Career Guidance For Women</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <i class="fas fa-rocket icon"></i>
+            <h1 class="title">Smart Career Guidance For Women</h1>
+            <p class="subtitle">AI Powered Career Recommendation System</p>
+        </div>
+
+        <form action="/predict" method="POST" onsubmit="showLoader()">
+            <div class="input-group">
+                <i class="fas fa-birthday-cake input-icon"></i>
+                <input type="number" name="age" placeholder="Enter Age" required min="18" max="65">
+            </div>
+
+            <div class="input-group">
+                <i class="fas fa-graduation-cap input-icon"></i>
+                <input type="text" name="education" placeholder="Education Level" required>
+            </div>
+
+            <div class="input-group">
+                <i class="fas fa-tools input-icon"></i>
+                <input type="text" name="skills" placeholder="Skills" required>
+            </div>
+
+            <div class="input-group">
+                <i class="fas fa-heart input-icon"></i>
+                <input type="text" name="interests" placeholder="Interests" required>
+            </div>
+
+            <div class="input-group">
+                <i class="fas fa-chart-line input-icon"></i>
+                <input type="number" name="score" placeholder="Score" step="0.1" required min="0" max="100">
+            </div>
+
+            <button type="submit" id="predictBtn">
+                <i class="fas fa-magic"></i>
+                Predict My Career
+            </button>
+        </form>
+
+        <div id="loader" class="loader"></div>
+
+        {% if prediction_text %}
+        <div class="result-box">
+            <h2>{{ prediction_text }}</h2>
+        </div>
+        {% endif %}
+    </div>
+
+    <script>
+        function showLoader() {
+            document.getElementById("loader").style.display = "block";
+            document.getElementById("predictBtn").innerHTML =
+                '<i class="fas fa-spinner fa-spin"></i> Analyzing...';
+            document.getElementById("predictBtn").disabled = true;
+        }
+    </script>
+</body>
+</html>

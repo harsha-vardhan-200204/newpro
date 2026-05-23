@@ -1,0 +1,300 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Arial;
+}
+
+
+body{
+
+    height:100vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    overflow:hidden;
+
+    background: linear-gradient(
+        -45deg,
+        #141e30,
+        #243b55,
+        #6a11cb,
+        #2575fc
+    );
+
+    background-size:400% 400%;
+
+    animation:bgMove 12s infinite;
+
+}
+
+
+
+/* floating particles */
+.particles::before,
+.particles::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:300px;
+    height:300px;
+
+    border-radius:50%;
+
+    background:
+    rgba(255,255,255,0.08);
+
+    animation:float 8s infinite;
+
+}
+
+.particles::before{
+
+    top:10%;
+    left:10%;
+
+}
+
+.particles::after{
+
+    bottom:10%;
+    right:10%;
+
+}
+
+
+
+/* Main Card */
+.container{
+
+    width:520px;
+
+    padding:35px;
+
+    border-radius:20px;
+
+    background:
+    rgba(255,255,255,0.12);
+
+    backdrop-filter: blur(25px);
+
+    box-shadow:
+    0 10px 40px rgba(0,0,0,0.35);
+
+    transition:0.2s;
+
+}
+
+
+
+/* Clock */
+.clock{
+
+    text-align:right;
+
+    color:#fff;
+
+    font-size:14px;
+
+}
+
+
+
+/* Title */
+.title{
+
+    color:white;
+
+    text-align:center;
+
+    font-size:28px;
+
+    animation:glow 2s infinite alternate;
+
+}
+
+
+.subtitle{
+
+    color:#ddd;
+
+    text-align:center;
+
+    margin-bottom:20px;
+
+}
+
+
+
+/* Inputs */
+input{
+
+    width:100%;
+
+    padding:14px;
+
+    margin:10px 0;
+
+    border:none;
+
+    border-radius:12px;
+
+    outline:none;
+
+    transition:0.4s;
+
+}
+
+
+input:focus{
+
+    transform:scale(1.03);
+
+    box-shadow:
+    0 0 20px rgba(255,255,255,0.8);
+
+}
+
+
+
+/* Button */
+button{
+
+    width:100%;
+
+    padding:14px;
+
+    border:none;
+
+    border-radius:12px;
+
+    cursor:pointer;
+
+    font-size:16px;
+
+    font-weight:bold;
+
+    transition:0.4s;
+
+}
+
+
+button:hover{
+
+    transform:scale(1.06);
+
+    box-shadow:
+    0 0 25px white;
+
+}
+
+
+
+/* Loader */
+.loader{
+
+    display:none;
+
+    margin:20px auto;
+
+    width:50px;
+    height:50px;
+
+    border:5px solid white;
+
+    border-top:5px solid transparent;
+
+    border-radius:50%;
+
+    animation:spin 1s linear infinite;
+
+}
+
+
+
+/* Prediction Box */
+.result-box{
+
+    margin-top:20px;
+
+    text-align:center;
+
+    color:white;
+
+    animation:fadeIn 1s ease;
+
+}
+
+
+
+/* Animations */
+
+@keyframes bgMove{
+
+    0%{
+        background-position:0% 50%;
+    }
+
+    50%{
+        background-position:100% 50%;
+    }
+
+    100%{
+        background-position:0% 50%;
+    }
+
+}
+
+
+@keyframes glow{
+
+    from{
+        text-shadow:0 0 5px white;
+    }
+
+    to{
+        text-shadow:0 0 20px white;
+    }
+
+}
+
+
+@keyframes float{
+
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-30px);
+    }
+
+}
+
+
+@keyframes spin{
+
+    100%{
+        transform:rotate(360deg);
+    }
+
+}
+
+
+@keyframes fadeIn{
+
+    from{
+        opacity:0;
+    }
+
+    to{
+        opacity:1;
+    }
+
+}
